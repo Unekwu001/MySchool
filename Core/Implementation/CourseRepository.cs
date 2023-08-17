@@ -37,6 +37,7 @@ namespace Core.Implementation
             return course;
         }
 
+
         public async Task<Course> DeleteCourseAsync(string courseId)
         {
             var courseToDelete = await _schoolDbContext.Courses.FirstOrDefaultAsync(c => c.Id == courseId);
@@ -47,6 +48,12 @@ namespace Core.Implementation
                 await _schoolDbContext.SaveChangesAsync();
             }
             return courseToDelete;
+        }
+
+
+        public async Task<Course> GetCourseByIdAsync(string courseId)
+        {
+            return await _schoolDbContext.Courses.FindAsync(courseId);
         }
 
     }
