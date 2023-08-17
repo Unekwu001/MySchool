@@ -10,11 +10,11 @@ namespace Core.Service
 {
     public interface ICourseRepository
     {
-        //Task<Course> AddCourse(AddCourseDto addCourseDto); 
+        Task<Course> AddCourseAsync(AddCourseDto addCourseDto);
         //Task<Course> GetCourseById(int courseId);
         //Task<Course> GetAllCourses(); 
         //Task<Course> UpdateCourse(UpdateCourseDto updateCourseDto);
-        //Task<Course> DeleteCourse(string courseId);
+        Task<Course> DeleteCourseAsync(string courseId); 
        
     }
 }
