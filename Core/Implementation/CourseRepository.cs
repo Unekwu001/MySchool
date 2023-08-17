@@ -30,31 +30,47 @@ namespace Core.Implementation
                 IsDeleted = false,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
-                Description = addCourseDto.Description               
+                Description = addCourseDto.Description
             };
             _schoolDbContext.Courses.Add(course);
             await _schoolDbContext.SaveChangesAsync();
             return course;
         }
 
-
-        public async Task<Course> DeleteCourseAsync(string courseId)
-        {
-            var courseToDelete = await _schoolDbContext.Courses.FirstOrDefaultAsync(c => c.Id == courseId);
-            if (courseToDelete != null)
-            {
-                courseToDelete.IsDeleted = true;
-                courseToDelete.UpdatedAt = DateTime.UtcNow;
-                await _schoolDbContext.SaveChangesAsync();
-            }
-            return courseToDelete;
-        }
-
-
         public async Task<Course> GetCourseByIdAsync(string courseId)
         {
             return await _schoolDbContext.Courses.FindAsync(courseId);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public async Task<Course> DeleteCourseAsync(string courseId)
+        //{
+        //    var courseToDelete = await _schoolDbContext.Courses.FirstOrDefaultAsync(c => c.Id == courseId);
+        //    if (courseToDelete != null)
+        //    {
+        //        courseToDelete.IsDeleted = true;
+        //        courseToDelete.UpdatedAt = DateTime.UtcNow;
+        //        await _schoolDbContext.SaveChangesAsync();
+        //    }
+        //    return courseToDelete;
+        //}
+
+
+
 
     }
 }

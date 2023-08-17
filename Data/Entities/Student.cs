@@ -10,6 +10,6 @@ namespace Data.Entities
     {
         public string StudentName { get; set; } 
         public DateTime DateOfBirth { get; set; }
-        public List<Enrollment> EnrolledCourses { get; set; } = new List<Enrollment>();
+        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
     }
 }

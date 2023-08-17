@@ -12,7 +12,6 @@ namespace Core.Service
     {
         Task<Course> AddCourseAsync(AddCourseDto addCourseDto);
         Task<Course> GetCourseByIdAsync(string courseId);
-        Task<Course> DeleteCourseAsync(string courseId); 
-       
+            
     }
 }

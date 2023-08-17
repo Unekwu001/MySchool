@@ -42,26 +42,29 @@ namespace API.Controllers
         }
 
 
-        [HttpDelete("delete-course")]
-        public async Task <IActionResult> DeleteCourse(string courseId)
-        {
-            try
-            {
-                var deletedCourse = await _courseRepo.DeleteCourseAsync(courseId);
-                if (deletedCourse != null)
-                {
-                    return Ok(ApiResponse.Success("Course was deleted successfully"));
-                }
-                else
-                {
-                    return NotFound(ApiResponse.Success("Course was not found"));
-                }
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ApiResponse.Failed($"failed to delete course' {ex}"));
-            }
-        }
+
+
+
+        //[HttpDelete("delete-course")]
+        //public async Task <IActionResult> DeleteCourse(string courseId)
+        //{
+        //    try
+        //    {
+        //        var deletedCourse = await _courseRepo.DeleteCourseAsync(courseId);
+        //        if (deletedCourse != null)
+        //        {
+        //            return Ok(ApiResponse.Success("Course was deleted successfully"));
+        //        }
+        //        else
+        //        {
+        //            return NotFound(ApiResponse.Success("Course was not found"));
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        return BadRequest(ApiResponse.Failed($"failed to delete course' {ex}"));
+        //    }
+        //}
 
     }
 }

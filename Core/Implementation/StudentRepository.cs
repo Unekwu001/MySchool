@@ -39,32 +39,51 @@ namespace Core.Implementation
 
         public async Task<Student> GetStudentByIdAsync(string studentId)
         {
-            return await _schoolDbContext.Students.FindAsync(studentId); 
-        }
+            return await _schoolDbContext.Students.FindAsync(studentId);
+        }       
 
 
-        public async Task<List<Student>> GetAllStudentsAsync()
+
+
+        public async Task<List<Student>> GetStudentsEnrolledInCourseAsync(string courseId)
         {
-            return await _schoolDbContext.Students.ToListAsync();
+            var enrolledStudents = await _schoolDbContext.Students
+                .Where(student => student.Enrollments.Any(enrollment => enrollment.CourseId == courseId))
+                .ToListAsync();
+
+            return enrolledStudents;
         }
+        
+        
 
 
 
 
-        public async Task<Student> DeleteStudentAsync(string studentId)
-        {
-            var student = await _schoolDbContext.Students.FirstOrDefaultAsync(student => student.Id == studentId);
-            if (student != null)
-            {
-                student.IsDeleted = true;
-                student.UpdatedAt = DateTime.UtcNow;
 
-                //_schoolDbContext.Students.Remove(student);
-                await _schoolDbContext.SaveChangesAsync();
-            }
-            return student;
-        }
 
+
+
+        // public async Task<List<Student>> GetAllStudentsAsync()
+        //{
+        //    return await _schoolDbContext.Students.ToListAsync();
+        //}
+
+
+
+
+        //public async Task<Student> DeleteStudentAsync(string studentId)
+        //{
+        //    var student = await _schoolDbContext.Students.FirstOrDefaultAsync(student => student.Id == studentId);
+        //    if (student != null)
+        //    {
+        //        student.IsDeleted = true;
+        //        student.UpdatedAt = DateTime.UtcNow;
+
+        //        //_schoolDbContext.Students.Remove(student);
+        //        await _schoolDbContext.SaveChangesAsync();
+        //    }
+        //    return student;
+        //}
 
 
 

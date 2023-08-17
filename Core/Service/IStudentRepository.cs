@@ -12,9 +12,7 @@ namespace Core.Service
     {
         Task<Student> AddStudentAsync (AddStudentDto studentDto); 
         Task<Student> GetStudentByIdAsync(string studentId);
-        Task<List<Student>> GetAllStudentsAsync();
+        Task<List<Student>> GetStudentsEnrolledInCourseAsync(string courseId);
 
-        //Task<Student> UpdateStudent (UpdateStudentDto studentDto);
-        Task<Student> DeleteStudentAsync (string studentId); 
     }
 }
